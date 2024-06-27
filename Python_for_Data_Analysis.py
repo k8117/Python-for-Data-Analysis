@@ -77,50 +77,79 @@ numeric_columns = data.select_dtypes(include=['float64', 'int64'])  # Select onl
 correlations = numeric_columns.corr()  # Calculate the correlation matrix
 print("\nCorrelation Matrix:\n", correlations)
 
-# 4. Visualize the data with charts and graphs
-# Top products by quantity
+# Visualizing the top products by quantity sold
+# - Set the figure size for better visibility
+# - Plot a bar chart of top products by quantity
+# - Add title, x-axis label, and y-axis label for clarity
+# - Save the plot as a PNG file for future reference
+# - Display the plot
 plt.figure(figsize=(10, 6))
 top_products_quantity.plot(kind='bar')
 plt.title('Top Products by Quantity')
 plt.xlabel('Product ID')
 plt.ylabel('Quantity Sold')
-plt.savefig('top_products_quantity.png')  # Save the plot as a PNG file
+plt.savefig('top_products_quantity.png')
 plt.show()
 
-# Top products by revenue
+# Visualizing the top products by revenue
+# - Set the figure size for better visibility
+# - Plot a bar chart of top products by revenue
+# - Add title, x-axis label, and y-axis label for clarity
+# - Save the plot as a PNG file for future reference
+# - Display the plot
 plt.figure(figsize=(10, 6))
 top_products_revenue.plot(kind='bar')
 plt.title('Top Products by Revenue')
 plt.xlabel('Product ID')
 plt.ylabel('Total Sales')
-plt.savefig('top_products_revenue.png')  # Save the plot as a PNG file
+plt.savefig('top_products_revenue.png')
 plt.show()
 
-# Sales trend over time
-sales_trend = data.groupby(data['purchase_date'].dt.to_period('M'))['total_sales'].sum()  # Calculate monthly sales trend
+
+# Calculating and visualizing the monthly sales trend
+# - Group data by month and calculate total sales for each month
+# - Set the figure size for better visibility
+# - Plot a line chart to show sales trend over time
+# - Add title, x-axis label, and y-axis label for clarity
+# - Save the plot as a PNG file for future reference
+# - Display the plot
+sales_trend = data.groupby(data['purchase_date'].dt.to_period('M'))['total_sales'].sum()
 
 plt.figure(figsize=(12, 6))
 sales_trend.plot(kind='line')
 plt.title('Sales Trend Over Time')
 plt.xlabel('Month')
 plt.ylabel('Total Sales')
-plt.savefig('sales_trend.png')  # Save the plot as a PNG file
+plt.savefig('sales_trend.png')
 plt.show()
 
-# Distribution of sales amount
+
+# Visualizing the distribution of total sales amount
+# - Set the figure size for better visibility
+# - Plot a histogram with 50 bins and a KDE overlay to show the distribution
+# - Add title, x-axis label, and y-axis label for clarity
+# - Save the plot as a PNG file for future reference
+# - Display the plot
 plt.figure(figsize=(10, 6))
-sns.histplot(data['total_sales'], bins=50, kde=True)  # Plot the distribution of total sales amount
+sns.histplot(data['total_sales'], bins=50, kde=True)
 plt.title('Distribution of Sales Amount')
 plt.xlabel('Total Sales')
 plt.ylabel('Frequency')
-plt.savefig('distribution_of_sales.png')  # Save the plot as a PNG file
+plt.savefig('distribution_of_sales.png')
 plt.show()
 
-# Additional visualization: Correlation heatmap
+
+# Visualizing the correlation matrix as a heatmap
+# - Set the figure size for better visibility
+# - Plot a heatmap with annotation for correlation coefficients
+# - Use a color gradient for better differentiation of values
+# - Add title for clarity
+# - Save the plot as a PNG file for future reference
+# - Display the plot
 plt.figure(figsize=(12, 8))
-sns.heatmap(correlations, annot=True, cmap='coolwarm')  # Plot the correlation matrix as a heatmap
+sns.heatmap(correlations, annot=True, cmap='coolwarm')
 plt.title('Correlation Matrix Heatmap')
-plt.savefig('correlation_heatmap.png')  # Save the plot as a PNG file
+plt.savefig('correlation_heatmap.png')
 plt.show()
 
 print("Exploratory Data Analysis complete. Graphs saved as PNG files.")
