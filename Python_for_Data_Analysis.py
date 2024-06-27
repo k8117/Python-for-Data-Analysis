@@ -124,3 +124,109 @@ plt.savefig('correlation_heatmap.png')  # Save the plot as a PNG file
 plt.show()
 
 print("Exploratory Data Analysis complete. Graphs saved as PNG files.")
+
+
+'''
+Initial Data Head:
+                            order_id  quantity                        product_id  ...     payment_type product_category_name  product_weight_gram
+0  2e7a8482f6fb09756ca50c10d7bfc047         2  f293394c72c9b5fafd7023301fc21fc2  ...  virtual account               fashion               1800.0 
+1  2e7a8482f6fb09756ca50c10d7bfc047         1  c1488892604e4ba5cff5b4eb4d595400  ...  virtual account            automotive               1400.0 
+2  e5fa5a7210941f7d56d0208e4e071d35         1  f3c2d01a84c947b078e32bbef0718962  ...         e-wallet                  toys                700.0 
+3  3b697a20d9e427646d92567910af6d57         1  3ae08df6bcbfe23586dd431c40bddbb7  ...         e-wallet             utilities                300.0 
+4  71303d7e93b399f5bcd537d124c0bcfa         1  d2998d7ced12f83f9b832f33cf6507b6  ...         e-wallet               fashion                500.0 
+
+[5 rows x 12 columns]
+
+Data Info:
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 49999 entries, 0 to 49998
+Data columns (total 12 columns):
+ #   Column                 Non-Null Count  Dtype
+---  ------                 --------------  -----
+ 0   order_id               49999 non-null  object
+ 1   quantity               49999 non-null  int64
+ 2   product_id             49999 non-null  object
+ 3   price                  49999 non-null  int64
+ 4   seller_id              49999 non-null  object
+ 5   freight_value          49999 non-null  int64
+ 6   customer_id            49999 non-null  object
+ 7   order_status           49999 non-null  object
+ 8   purchase_date          19881 non-null  datetime64[ns]
+ 9   payment_type           49999 non-null  object
+ 10  product_category_name  49999 non-null  object
+ 11  product_weight_gram    49980 non-null  float64
+dtypes: datetime64[ns](1), float64(1), int64(3), object(7)
+memory usage: 4.6+ MB
+
+Missing values before handling:
+ order_id                     0
+quantity                     0
+product_id                   0
+price                        0
+seller_id                    0
+freight_value                0
+customer_id                  0
+order_status                 0
+purchase_date            30118
+payment_type                 0
+product_category_name        0
+product_weight_gram         19
+dtype: int64
+
+Missing values after handling:
+ order_id                 0
+quantity                 0
+product_id               0
+price                    0
+seller_id                0
+freight_value            0
+customer_id              0
+order_status             0
+purchase_date            0
+payment_type             0
+product_category_name    0
+product_weight_gram      0
+dtype: int64
+Cleaned data saved to Corrected_File.xlsx
+
+Total Sales Amount: 156053194000
+Average Sales Amount per Order: 3121126.3025260507
+
+Top Products by Quantity:
+ product_id
+422879e10f46682990de24d770e7f83d    464
+99a4788cb24856965c36a24e339b6058    406
+389d119b48cf3043d311335e499d9c6b    285
+53759a2ecddad2bb87a079a1f1519f73    275
+154e7e31ebfa092203795c972e5804a6    237
+368c6c730842d78016ad823897a372db    231
+d5991653e037ccb7af6ed7d94246b249    228
+9571759451b1d780ee7c15012ea109d4    210
+7c1bd920dbdf22470b68bde975dd3ccf    181
+42a2c92a0979a949ca4ea89ec5c7b934    179
+Name: quantity, dtype: int64
+
+Top Products by Revenue:
+ product_id
+422879e10f46682990de24d770e7f83d    1243964000
+99a4788cb24856965c36a24e339b6058    1028276000
+389d119b48cf3043d311335e499d9c6b     780584000
+53759a2ecddad2bb87a079a1f1519f73     715026000
+9571759451b1d780ee7c15012ea109d4     627470000
+368c6c730842d78016ad823897a372db     613350000
+154e7e31ebfa092203795c972e5804a6     596916000
+d5991653e037ccb7af6ed7d94246b249     496697000
+7c1bd920dbdf22470b68bde975dd3ccf     471974000
+270516a3f41dc035aa87d220228f844c     442546000
+Name: total_sales, dtype: int64
+
+Correlation Matrix:
+                      quantity     price  freight_value  product_weight_gram  total_sales
+quantity             1.000000 -0.001649      -0.009926            -0.009229     0.691926
+price               -0.001649  1.000000       0.005095             0.002769     0.607551
+freight_value       -0.009926  0.005095       1.000000            -0.005228    -0.004290
+product_weight_gram -0.009229  0.002769      -0.005228             1.000000    -0.005351
+total_sales          0.691926  0.607551      -0.004290            -0.005351     1.000000
+Exploratory Data Analysis complete. Graphs saved as PNG files.
+'''
